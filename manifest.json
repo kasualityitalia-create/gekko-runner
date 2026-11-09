@@ -1,0 +1,22 @@
+{
+  "name": "Gekko Runner | Kasuality Arcade",
+  "short_name": "Gekko Runner",
+  "description": "The Reverse Chroma Runner - Gioco offline di Kasuality",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#121214",
+  "theme_color": "#18181b",
+  "icons": [
+    {
+      "src": "./img/gekko.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./img/gekko.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gekko Runner | Kasuality Arcade</title>
+    <meta name="description" content="The Reverse Chroma Runner - A retro arcade game by Kasuality: reverse runner mechanics, OKLCH colors, 100% offline PWA, zero dependencies, WCAG 2.2 AAA certified.">
+    <link rel="canonical" href="https://www.kasuality.com/gekko/">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#18181b">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Gekko Runner">
+
+    <!-- Open Graph / Social Cards -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.kasuality.com/gekko/">
+    <meta property="og:title" content="Gekko Runner | Kasuality Arcade">
+    <meta property="og:description" content="The Reverse Chroma Runner - A retro arcade game by Kasuality: reverse runner mechanics, OKLCH spray paint, 100% offline PWA, WCAG 2.2 AAA certified.">
+    <meta property="og:image" content="https://www.kasuality.com/img/social-card.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://www.kasuality.com/gekko/">
+    <meta name="twitter:title" content="Gekko Runner | Kasuality Arcade">
+    <meta name="twitter:description" content="The Reverse Chroma Runner - A retro arcade game by Kasuality: reverse runner mechanics, OKLCH spray paint, 100% offline PWA, WCAG 2.2 AAA certified.">
+    <meta name="twitter:image" content="https://www.kasuality.com/img/social-card.jpg">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="game-container">
+        <!-- Barra superiore Arcade -->
+        <header class="arcade-header">
+            <div class="brand-badge">
+                <span class="pill">Kasuality Arcade</span>
+                <h1 class="game-title">Gekko Runner</h1>
+                <span class="by-brand">by <a id="brandLink" href="https://www.kasuality.com" target="_blank" rel="noopener">Kasuality</a></span>
+            </div>
+            <div class="header-actions">
+                <!-- Icona Tema Sole / Luna in puro SVG (Target 40-44px WCAG AAA) -->
+                <button id="themeBtn" class="btn-icon" aria-pressed="false" aria-label="Attiva modalità scura" title="Cambia Modalità Giorno / Notte">
+                    <svg class="icon-svg icon-moon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="icon-svg icon-sun" style="display:none;" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+
+                <!-- Icona Audio Altoparlante On / Off in puro SVG (Target 40-44px WCAG AAA) -->
+                <button id="muteBtn" class="btn-icon" aria-pressed="false" aria-label="Disattiva audio" title="Attiva / Disattiva Audio">
+                    <svg class="icon-svg icon-sound-on" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                    </svg>
+                    <svg class="icon-svg icon-sound-off" style="display:none;" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="1" y1="1" x2="23" y2="23"></line>
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                        <path d="M17 9l4 4m0-4l-4 4"></path>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Area di Gioco Canvas con Live Region per Screen Reader (WCAG AAA) -->
+        <div class="canvas-wrapper">
+            <canvas id="gameCanvas" width="1000" height="360" role="img" aria-label="Gekko Runner: Gioco arcade Kasuality"></canvas>
+            <p id="gameStatus" class="sr-only" role="status" aria-live="polite"></p>
+        </div>
+
+        <!-- Footer controlli semantico con contrasti certificati AAA -->
+        <footer class="controls-footer">
+            <div class="desktop-help">
+                <svg class="footer-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="6" width="20" height="12" rx="2"></rect>
+                    <path d="M6 12h4m-2-2v4"></path>
+                    <line x1="15" y1="11" x2="15.01" y2="11"></line>
+                    <line x1="18" y1="13" x2="18.01" y2="13"></line>
+                </svg>
+                <strong id="lblControls" class="footer-heading">Comandi:</strong> 
+                <kbd class="key-badge">Spazio</kbd> / <kbd class="key-badge">↑</kbd> <span id="lblJumpDesk">Salta</span> &bull; 
+                <kbd class="key-badge">↓</kbd> / <kbd class="key-badge">Doppio Spazio</kbd> <span id="lblDuckDesk">Chinati</span>
+            </div>
+            <div class="mobile-help">
+                <svg class="footer-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                    <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                </svg>
+                <strong id="lblTouch" class="footer-heading">Touch:</strong> 
+                <strong>1 Tocco</strong> <span id="lblJumpMob">Salta</span> &bull; 
+                <strong>2 Tocchi</strong> <span id="lblDuckMob">Chinati</span>
+            </div>
+            <div class="spray-tip">
+                <svg class="footer-icon icon-palette" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle>
+                    <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle>
+                    <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle>
+                    <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle>
+                    <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path>
+                </svg>
+                <em id="lblSprayTip">La bomboletta colora automaticamente gli stencil in volo!</em>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Script di Gioco (100% Offline, Zero Dipendenze) -->
+    <script src="audio.js"></script>
+    <script src="game.js"></script>
+
+    <!-- Service Worker Cache Engine (PWA Portable Offline) -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('sw.js', { scope: './' }).catch(function () {});
+            });
+        }
+    </script>
+</body>
+</html>

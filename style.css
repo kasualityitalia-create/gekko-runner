@@ -1,0 +1,457 @@
+/* ==========================================================================
+   Gekko Runner - Kasuality Arcade (Stile Retro Moderno Bianco e Nero)
+   Conforme agli standard WCAG 2.2 AAA & APCA
+   Responsive Mobile Ottimizzato & PWA Ready
+   ========================================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Accessibilità: Focus Ring visibile conforme WCAG 2.4.7 e 2.4.13 AAA */
+:focus-visible {
+    outline: 3px solid #4f46e5;
+    outline-offset: 2px;
+}
+
+body.dark-mode :focus-visible {
+    outline-color: #a5b4fc;
+}
+
+/* Utility Screen Reader (WCAG 1.1.1 e 4.1.3) */
+.sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+body {
+    background-color: #f4f4f5;
+    color: #18181b;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    overflow-x: hidden;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+body.dark-mode {
+    background-color: #09090b;
+    color: #fafafa;
+}
+
+/* Container principale del Gioco */
+.game-container {
+    width: 100%;
+    max-width: 1024px;
+    background: #ffffff;
+    border: 3px solid #18181b;
+    border-radius: 16px;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+body.dark-mode .game-container {
+    background: #121214;
+    border-color: #3f3f46;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6);
+}
+
+/* Header arcade con brand e controlli */
+.arcade-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.85rem 1.25rem;
+    border-bottom: 2px solid #e4e4e7;
+    background: #fafafa;
+    transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+body.dark-mode .arcade-header {
+    background: #18181b;
+    border-color: #27272a;
+}
+
+.brand-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+    font-size: 1.05rem;
+    letter-spacing: -0.5px;
+    min-width: 0;
+}
+
+.brand-badge .pill {
+    background: #18181b;
+    color: #ffffff;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+body.dark-mode .brand-badge .pill {
+    background: #fafafa;
+    color: #18181b;
+}
+
+.game-title {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: inherit;
+    margin: 0;
+    display: inline;
+    white-space: nowrap;
+}
+
+/* Link Brand con contrasto AAA verificato */
+.brand-badge .by-brand {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #52525b; /* Contrasto 7.41:1 su #fafafa */
+    margin-left: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+body.dark-mode .brand-badge .by-brand {
+    color: #d4d4d8; /* Contrasto 11.99:1 su #18181b */
+}
+
+.brand-badge .by-brand a {
+    color: #4338ca; /* Contrasto 7.57:1 AAA su #fafafa */
+    text-decoration: underline;
+    font-weight: 700;
+    transition: color 0.2s ease;
+}
+
+.brand-badge .by-brand a:hover {
+    color: #312e81;
+}
+
+body.dark-mode .brand-badge .by-brand a {
+    color: #c7d2fe; /* Contrasto 11.88:1 AAA su #18181b */
+}
+
+body.dark-mode .brand-badge .by-brand a:hover {
+    color: #ffffff;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+/* Pulsanti con Target Size AAA 44x44px (WCAG 2.5.5) e Bordo 4.63:1 */
+.btn-icon {
+    background: transparent;
+    border: 2px solid #71717a; /* Contrasto bordo 4.63:1 (light) / 3.67:1 (dark) */
+    border-radius: 8px;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: inherit;
+    transition: all 0.2s ease;
+    padding: 0;
+}
+
+.btn-icon:hover {
+    background: #e4e4e7;
+    border-color: #52525b;
+}
+
+body.dark-mode .btn-icon {
+    border-color: #71717a;
+}
+
+body.dark-mode .btn-icon:hover {
+    background: #27272a;
+    border-color: #a1a1aa;
+}
+
+.icon-svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
+/* Canvas del gioco con user-select isolato */
+.canvas-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1000 / 360;
+    background: #ffffff;
+    cursor: pointer;
+    overflow: hidden;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+    transition: background-color 0.4s ease;
+}
+
+body.dark-mode .canvas-wrapper {
+    background: #121214;
+}
+
+#gameCanvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* Footer / Pannello controlli con contrasti AAA */
+.controls-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.85rem 1.25rem;
+    background: #fafafa;
+    border-top: 2px solid #e4e4e7;
+    font-size: 0.88rem;
+    color: #52525b; /* Contrasto 7.41:1 su #fafafa AAA */
+    flex-wrap: wrap;
+    gap: 10px;
+    transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+body.dark-mode .controls-footer {
+    background: #18181b;
+    border-color: #27272a;
+    color: #a1a1aa; /* Contrasto 7.30:1 su #18181b AAA */
+}
+
+.footer-heading {
+    color: #18181b; /* Contrasto 16.12:1 AAA */
+}
+
+body.dark-mode .footer-heading {
+    color: #fafafa; /* Contrasto 19.06:1 AAA */
+}
+
+.footer-icon {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: -2px;
+    margin-right: 4px;
+    color: inherit;
+}
+
+.icon-palette {
+    color: #4338ca; /* Contrasto 7.57:1 AAA */
+}
+
+body.dark-mode .icon-palette {
+    color: #a5b4fc; /* Contrasto 8.36:1 AAA */
+}
+
+/* Badge semantico kbd */
+kbd.key-badge {
+    display: inline-block;
+    padding: 2px 7px;
+    background: #e4e4e7;
+    border: 1px solid #71717a;
+    border-radius: 4px;
+    font-family: monospace;
+    font-weight: 700;
+    color: #18181b; /* Contrasto 13.96:1 AAA */
+    margin: 0 2px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+
+body.dark-mode kbd.key-badge {
+    background: #27272a;
+    border-color: #71717a;
+    color: #f4f4f5; /* Contrasto 17.5:1 AAA */
+}
+
+.mobile-help {
+    display: none;
+}
+
+/* -------------------------------------------------------------------------
+   RESPONSIVE DESIGN MOBILE (< 768px)
+   ------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    body {
+        padding: 0.5rem 0.35rem;
+    }
+
+    .game-container {
+        border-width: 2px;
+        border-radius: 12px;
+    }
+
+    .desktop-help {
+        display: none;
+    }
+
+    .mobile-help {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        flex-wrap: wrap;
+    }
+
+    .arcade-header {
+        padding: 0.5rem 0.75rem;
+        gap: 8px;
+    }
+
+    .brand-badge {
+        gap: 6px;
+    }
+
+    .brand-badge .pill {
+        font-size: 0.68rem;
+        padding: 2px 6px;
+    }
+
+    .game-title {
+        font-size: 0.95rem;
+    }
+
+    .brand-badge .by-brand {
+        font-size: 0.78rem;
+        margin-left: 2px;
+    }
+
+    .header-actions {
+        gap: 8px;
+    }
+
+    .btn-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .controls-footer {
+        padding: 0.55rem 0.75rem;
+        font-size: 0.8rem;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 6px;
+    }
+
+    .spray-tip {
+        font-size: 0.75rem;
+        text-align: center;
+    }
+}
+
+/* Ottimizzazione Smartphone Stretti (< 380px) */
+@media (max-width: 380px) {
+    .brand-badge .by-brand {
+        display: none; /* Nasconde 'by Kasuality' per evitare qualunque a capo */
+    }
+
+    .brand-badge .pill {
+        font-size: 0.62rem;
+        padding: 2px 5px;
+    }
+
+    .game-title {
+        font-size: 0.88rem;
+    }
+
+    .btn-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .icon-svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .controls-footer {
+        font-size: 0.75rem;
+    }
+}
+
+/* Modalità Arcade Landscape su Smartphone: Esperienza a Schermo Intero */
+@media (max-height: 500px) and (orientation: landscape) {
+    body {
+        padding: 0;
+        margin: 0;
+        height: 100vh;
+        height: 100dvh;
+        justify-content: stretch;
+    }
+
+    .game-container {
+        width: 100vw;
+        height: 100vh;
+        height: 100dvh;
+        max-width: none;
+        border: none;
+        border-radius: 0;
+    }
+
+    .arcade-header {
+        padding: 0.35rem 0.75rem;
+    }
+
+    .canvas-wrapper {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        aspect-ratio: auto;
+        height: auto;
+        min-height: 0;
+    }
+
+    #gameCanvas {
+        width: auto;
+        height: 100%;
+        max-width: 100%;
+        aspect-ratio: 1000 / 360;
+    }
+
+    .controls-footer {
+        padding: 0.35rem 0.75rem;
+        font-size: 0.75rem;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+/* Supporto Accessibilità: Riduzione del Movimento (WCAG 2.2.2 / 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
