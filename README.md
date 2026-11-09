@@ -8,7 +8,7 @@
 [![Framerate](https://img.shields.io/badge/Framerate-60Hz%20%2F%20120Hz%20ProMotion-ec4899.svg)](game.js)
 
 > **Official offline arcade game by [Kasuality OS](https://www.kasuality.com)**  
-> *A dull black & white cityscape. A nimble chameleon with a spray can. Jump, slide, and bring the city back to life in vibrant OKLCH colors!*
+> *A dull black and white cityscape. A nimble chameleon with a spray can. Jump, slide, and bring the city back to life in vibrant OKLCH colors!*
 
 🎮 **Play Live:** [https://www.kasuality.com/gekko/](https://www.kasuality.com/gekko/)
 
@@ -24,12 +24,12 @@
 
 ---
 
-## ♿ Certified Accessibility (WCAG 2.2 AAA & APCA)
+## ♿ Certified Accessibility (WCAG 2.2 AAA e APCA)
 
 Accessibility was an architectural priority from line 1:
 
 - **Enhanced Color Contrast:** All textual elements (HUD, badges, combo popups) maintain a **contrast ratio > 7.5:1** (WCAG AAA) and APCA $L_c \ge 75$ against both light and dark backgrounds.
-- **Audio & Screen Reader Mirroring:** Built-in semantic `<p role="status" aria-live="polite">` mirror announces milestones, wall paintings, and final scores for visually impaired players.
+- **Audio and Screen Reader Mirroring:** Built-in semantic `<p role="status" aria-live="polite">` mirror announces milestones, wall paintings, and final scores for visually impaired players.
 - **Touch Targets:** Minimum touch boundaries calibrated to $40 \times 40\text{px}$ / $44 \times 44\text{px}$ with high-contrast visible focus rings (`:focus-visible`).
 - **Motion Sensitivity:** Automatically honors `prefers-reduced-motion` by disabling screen flashing, sudden luminance inversions, and background strobing.
 - **Colorblind-Safe Perceptual Danger:** Danger signals (buckets, zebrastripe barriers, drones) are 100% achromatic and shape-differentiated, ensuring zero reliance on color alone.
@@ -42,7 +42,7 @@ Accessibility was an architectural priority from line 1:
 | :--- | :--- | :--- |
 | **Jump / Salto** | <kbd>Spacebar</kbd> or <kbd>↑</kbd> or <kbd>W</kbd> | Single Tap anywhere on screen |
 | **Duck / Chinati** | <kbd>↓</kbd> or <kbd>S</kbd> | Swipe Down or Double Tap |
-| **Fast Drop & Slide** | Quick Double <kbd>Spacebar</kbd> in mid-air | Quick Double Tap in mid-air |
+| **Fast Drop and Slide** | Quick Double <kbd>Spacebar</kbd> in mid-air | Quick Double Tap in mid-air |
 | **Toggle Dark/Light** | Click Sun/Moon button (<kbd>Tab</kbd> + <kbd>Enter</kbd>) | Tap Theme button |
 | **Toggle Mute** | Click Speaker button (<kbd>Tab</kbd> + <kbd>Enter</kbd>) | Tap Speaker button |
 
@@ -67,7 +67,7 @@ Then open `http://localhost:8080` in your favorite browser.
 
 ---
 
-## 📱 Progressive Web App (PWA) & 100% Offline
+## 📱 Progressive Web App (PWA) - 100% Offline
 
 Gekko Runner is a complete Progressive Web App:
 - **Service Worker (`sw.js`):** Employs a robust *Cache-First* strategy with `Promise.allSettled()` precaching. Once loaded online once, you can switch your device to **Airplane Mode** and play indefinitely without an internet connection.
@@ -90,7 +90,7 @@ The game dynamically detects the browser language on startup and localizes all H
 
 ```text
 gekko-runner/
-├── index.html         # Accessible HTML5 structure & semantic layout
+├── index.html         # Accessible HTML5 structure and semantic layout
 ├── style.css          # Responsive retro stylesheet (Mobile, Tablet, Desktop, Landscape)
 ├── game.js            # Core game engine (Reverse runner, 120Hz physics, collision detection)
 ├── audio.js           # Procedural 8-bit Web Audio API sound synthesizer
@@ -98,7 +98,7 @@ gekko-runner/
 ├── manifest.json      # Web App Manifest for mobile installation
 ├── favicon.ico        # High-res favicon icon
 ├── LICENSE            # Hybrid MIT + Brand Protection License
-├── README.md          # Project documentation (English & Italian)
+├── README.md          # Project documentation (Italiano e Inglese)
 └── img/
     ├── gekko.png      # Running sprite (High-DPI PNG)
     ├── gekko.svg      # Running sprite (Scalable Vector)
@@ -108,10 +108,10 @@ gekko-runner/
 
 ---
 
-## ⚖️ License & Intellectual Property
+## ⚖️ Licenza e Proprietà Intellettuale / License and Intellectual Property
 
-- **Code & Game Mechanics:** Licensed under the [MIT License](LICENSE) — free for educational, personal, and open-source use.
-- **Trademarks & Artwork:** The name **Kasuality**, the brand identity, and the character artwork of **Gekko** are proprietary creative works and trademarks of **Alessandro / Kasuality OS**. All rights reserved.
+- **Code and Game Mechanics:** Licensed under the [MIT License](LICENSE) — free for educational, personal, and open-source use.
+- **Trademarks and Artwork:** The name **Kasuality**, the brand identity, and the character artwork of **Gekko** are proprietary creative works and trademarks of **Alessandro / Kasuality OS**. All rights reserved.
 
 ---
 
