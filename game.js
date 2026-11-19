@@ -1040,14 +1040,26 @@
                 ctx.fillRect(gekko.x, currentY, gekko.duckW, gekko.duckH);
             }
         } else {
-            const bobbing = gekko.isGrounded ? Math.sin(gekko.runFrame * Math.PI) * 2.5 : 0;
+            const animAllowed = !prefersReducedMotion;
+            const phase = animAllowed ? Math.sin(gekko.runFrame * (Math.PI / 2)) : 0;
+            const bobbing = (gekko.isGrounded && animAllowed) ? Math.abs(phase) * -2.5 : 0;
+            const tilt = animAllowed
+                ? (gekko.isGrounded ? phase * 0.045 : Math.max(-0.08, Math.min(0.08, gekko.vy * 0.005)))
+                : 0;
+            const stretch = (gekko.isGrounded && animAllowed) ? Math.cos(gekko.runFrame * Math.PI) * 0.025 : 0;
             const currentY = gekko.y + bobbing;
 
+            const cx = gekko.x + gekko.w / 2;
+            const cy = currentY + gekko.h;
+            ctx.translate(cx, cy);
+            ctx.rotate(tilt);
+            ctx.scale(1 + stretch, 1 - stretch);
+
             if (assetsLoaded && gekkoImg.complete && gekkoImg.naturalWidth > 0) {
-                ctx.drawImage(gekkoImg, gekko.x, currentY, gekko.w, gekko.h);
+                ctx.drawImage(gekkoImg, -gekko.w / 2, -gekko.h, gekko.w, gekko.h);
             } else {
                 ctx.fillStyle = '#047857';
-                ctx.fillRect(gekko.x, currentY, gekko.w, gekko.h);
+                ctx.fillRect(-gekko.w / 2, -gekko.h, gekko.w, gekko.h);
             }
         }
         ctx.restore();
